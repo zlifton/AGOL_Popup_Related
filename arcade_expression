@@ -1,0 +1,26 @@
+// Define the relationship class and attributes:
+var relatedRecords = FeatureSetByRelationshipName($feature, "Fault_2_Ref", ["Citation", "Authors", "Pub_Date_Text", "Title", "Source", "LINK"], false);
+
+// Create an empty array to store the attribute values:
+var resultArray = [];
+
+// Iterate through each related record:
+for (var record in relatedRecords) {
+    // Extract the attributes you want to display
+    var attribute1 = record.Citation;
+    var attribute2 = record.Authors;
+		var attribute3 = record.Pub_Date_Text;
+		var attribute4 = record.Title;
+    var attribute5 = record.Source;
+		var attribute6 = record.LINK;
+
+		// Format the display to concatenate the elements of the citation:
+    var formattedText = attribute2 + ", " + attribute3 + ", " + attribute4 + ": " + attribute5 + TextFormatting.NewLine +
+												attribute6;
+
+    // Push the formatted citation to the empty array:
+    Push(resultArray, formattedText);
+}
+
+// Concatenate the array items into a single string with an extra newline between each entry
+return Concatenate(resultArray, TextFormatting.NewLine + TextFormatting.NewLine);
